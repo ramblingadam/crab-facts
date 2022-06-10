@@ -1,0 +1,20 @@
+{
+  "name": "crab-names",
+  "version": "1.0.0",
+  "description": "Crabs are cute and cool and kingly.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ramblingadam/crab-names.git"
+  },
+  "author": "Adam Morsa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ramblingadam/crab-names/issues"
+  },
+  "homepage": "https://github.com/ramblingadam/crab-names#readme"
+}
