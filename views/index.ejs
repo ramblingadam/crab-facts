@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crab Facts</title>
+
+	<!-- Font-Awesome Icons -->
+	<script src="https://kit.fontawesome.com/ab085a1591.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<body>
+  <section class="facts">
+    <h1>Crab Facts</h1>
+    <ul class="rappers">
+    <% for(let i=0; i < info.length; i++) {%>
+        <li class="rapper">
+            <span><%= info[i].fact %></span>
+            <!-- <span><%= info[i].birthName %></span> -->
+            <span><%= info[i].likes %></span>
+            <span class='fa fa-thumbs-up'></span>
+            <span class='fa fa-trash'></span>
+        </li>
+    <% } %>
+    </ul>
+  </section>
+
+  <section class="addFacts">
+    <h2>Know something about crabs? Share it with the class!</h2>
+
+    <form action="/addFact" method="POST">
+        <input type="text" placeholder="Crab Fact" name="stageName">
+        <input type="submit">
+    </form>
+  </section>
+  
+
+  <script src='js/main.js'></script>
+</body>
+</html>
