@@ -110,10 +110,22 @@ li {
   filter: invert(19%) sepia(73%) saturate(7290%) hue-rotate(357deg) brightness(108%) contrast(118%);
 }
 
+/* .factContent {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+} */
+
+span {
+  display: inline-block;
+}
+
 .fact {
   position: relative;
   display: block;
 }
+
+
 
 /* .fact::before {
   content: '';
@@ -141,17 +153,19 @@ li {
   position: relative;
   z-index: 1;
   margin: 1rem;
+  font-size: 3rem;
+  font-family: 'Surfbreaks';
 }
 
 .likes::before {
   content: '';
   position: absolute;
-  right: -1px;
-  top: -5px;
+  right: -2px;
+  top: -8px;
   z-index: -1;
 
-  height: 30px;
-  width: 20px;
+  height: 35px;
+  width: 25px;
 
   transform: rotate(-45deg);
   background: rgb(255, 102, 127);
@@ -161,12 +175,12 @@ li {
 .likes::after {
   content: '';
   position: absolute;
-  right: -9px;
-  top: -5px;
+  right: -10px;
+  top: -8px;
   z-index: -1;
 
-  height: 30px;
-  width: 20px;
+  height: 35px;
+  width: 25px;
 
   transform: rotate(45deg);
   background: rgb(255, 102, 127);
