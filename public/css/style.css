@@ -36,8 +36,10 @@ clear: both;
 /*******************************************/
 /* Set 1 rem to 10px */
 html {
-  /* font-size: 62.5%; */
+  font-size: 62.5%;
   font-family: sans-serif;
+  text-align: center;
+  padding: 2rem;
 }
 
 /******************************************
@@ -45,7 +47,44 @@ html {
 /*******************************************/
 h1 {
   color: red;
+  font-size: 5rem;
+  margin-bottom: 2rem;
 }
+
+ul {
+  font-size: 2rem;
+  /* border: 2px dashed red; */
+  margin-bottom: 2rem;
+  display: inline-block;
+}
+
+li {
+  list-style-type: none;
+  display: inline-block;
+  position: relative;
+  margin: .5rem;
+}
+
+.fact::before {
+  content: '';
+  position: absolute;
+  background-image: url('../img/crab-svgrepo-com.svg');
+  width: 20px;
+  height: 20px;
+  left: -20px;
+  top: 0px;
+  filter: invert(19%) sepia(73%) saturate(7290%) hue-rotate(357deg) brightness(108%) contrast(118%);
+}
+
+
+
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+
 
 /******************************************
 /* ADDITIONAL STYLES

@@ -1,4 +1,4 @@
-const { application } = require('express')
+const { request, response } = require('express')
 const express = require('express')
 const crab = express()
 const MongoClient = require('mongodb').MongoClient
@@ -29,11 +29,38 @@ crab.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// crab.post('/addFact', (req, res) => {
-//   db.collection('crabFacts')
-// })
+crab.post('/addFact', (req, res) => {
+  db.collection('crabFacts').insertOne( { fact: req.body.fact, likes: 0 })
+  .then(result => {
+    console.log('Crab fact added.')
+    res.redirect('/')
+  })
+  .catch(error => console.log(error))
+})
 
+crab.put('/addOneLike', (req, res) => {
+  db.collection('crabFacts').updateOne({ fact: req.body.factToLike, likes: req.body.currentLikes}, {
+    $set: {
+      likes:req.body.currentLikes + 1
+    }
+  }, {
+    sort: {_likes: -1}
+  })
+  .then(result => {
+    console.log('1 Like added.')
+    res.json('1 like added.')
+  })
+  .catch(error => console.error(error))
+})
 
+crab.delete('/deleteFact', (req, res) => {
+  db.collection('crabFacts').deleteOne({fact: req.body.factToDelete})
+  .then(result => {
+    console.log('Crab fact deleted.')
+    res.json('Crab fact deleted.')
+  })
+  .catch(error => console.error(error))
+})
 
 crab.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`)

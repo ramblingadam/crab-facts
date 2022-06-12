@@ -9,20 +9,19 @@
 	<!-- Font-Awesome Icons -->
 	<script src="https://kit.fontawesome.com/ab085a1591.js" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <body>
-  <section class="facts">
+  <section class="crabFacts">
     <h1>Crab Facts</h1>
-    <ul class="rappers">
+    <ul class="crabFactList">
     <% for(let i=0; i < info.length; i++) {%>
-        <li class="rapper">
-            <span><%= info[i].fact %></span>
-            <!-- <span><%= info[i].birthName %></span> -->
-            <span><%= info[i].likes %></span>
+        <li class="crabFact">
+            <span class="fact"><%= info[i].fact %></span>
+            <span class="likes"><%= info[i].likes %></span>
             <span class='fa fa-thumbs-up'></span>
             <span class='fa fa-trash'></span>
         </li>
@@ -34,7 +33,7 @@
     <h2>Know something about crabs? Share it with the class!</h2>
 
     <form action="/addFact" method="POST">
-        <input type="text" placeholder="Crab Fact" name="stageName">
+        <input type="text" placeholder="Crab Fact" name="fact">
         <input type="submit">
     </form>
   </section>
