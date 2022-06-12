@@ -1,5 +1,5 @@
 const deleteButtons = document.querySelectorAll('.fa-trash')
-const likeButtons = document.querySelectorAll('.fa-thumbs-up')
+const likeButtons = document.querySelectorAll('.fa-heart-circle-plus')
 
 Array.from(deleteButtons).forEach( deleteButton => {
   deleteButton.addEventListener('click', deleteFact)

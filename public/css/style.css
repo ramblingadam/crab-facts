@@ -40,11 +40,30 @@ html {
   font-family: sans-serif;
   text-align: center;
   padding: 2rem;
+  /* background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url('../img/crabBG.jpg'); */
+  background: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2)), url('../img/crabBG.jpg');
+  /* background: url('../img/crabBG.jpg'); */
 }
 
 /******************************************
 /* LAYOUT
 /*******************************************/
+
+.container {
+  background: rgba(206, 158, 2, 0.5);
+  border-radius: 10px;
+  padding: 2rem;
+  min-height: 80vh;
+  display: flex;
+  /* flex-flow: row wrap; */
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+.container > section {
+  width: 100%;
+}
+
 h1 {
   color: red;
   font-size: 5rem;
@@ -60,9 +79,25 @@ ul {
 
 li {
   list-style-type: none;
-  display: inline-block;
-  position: relative;
+  display: block;
   margin: .5rem;
+  padding: 10px 30px 10px 30px;
+  position: relative;
+  line-height: 2.4rem;
+  background: rgba(255,255,255,.5);
+  border-radius: 10px;
+}
+
+.fact,
+.likeBox,
+.controls {
+  /* background: rgba(255,255,255,.5); */
+  /* border-radius: 10px; */
+}
+
+.fact {
+  position: relative;
+  display: block;
 }
 
 .fact::before {
@@ -72,12 +107,67 @@ li {
   width: 20px;
   height: 20px;
   left: -20px;
-  top: 0px;
+  /* top: 0px; */
   filter: invert(19%) sepia(73%) saturate(7290%) hue-rotate(357deg) brightness(108%) contrast(118%);
 }
 
+.fact::after {
+  content: '';
+  position: absolute;
+  background-image: url('../img/crab-svgrepo-com.svg');
+  width: 20px;
+  height: 20px;
+  right: -20px;
+  /* top: 0px; */
+  filter: invert(19%) sepia(73%) saturate(7290%) hue-rotate(357deg) brightness(108%) contrast(118%);
+}
 
+.likes {
+  position: relative;
+  z-index: 1;
+  margin: 1rem;
+}
 
+.likes::before {
+  content: '';
+  position: absolute;
+  right: 0px;
+  top: -5px;
+  z-index: -1;
+
+  height: 30px;
+  width: 20px;
+
+  transform: rotate(-45deg);
+  background: rgb(255, 102, 127);
+  border-radius: 50% 50% 0 0;
+}
+
+.likes::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: -5px;
+  z-index: -1;
+
+  height: 30px;
+  width: 20px;
+
+  transform: rotate(45deg);
+  background: rgb(255, 102, 127);
+  border-radius: 50% 50% 0 0;
+}
+
+.fa-heart-circle-plus:hover {
+  cursor: pointer;
+  text-shadow: 0 0 5px white;
+  filter: invert(19%) sepia(73%) saturate(7290%) hue-rotate(357deg) brightness(108%) contrast(118%);
+
+}
+
+.addFacts {
+  align-self: flex-end;
+}
 
 h2 {
   font-size: 2.5rem;
