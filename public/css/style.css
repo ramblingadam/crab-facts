@@ -30,6 +30,11 @@ clear: both;
 /******************************************
 /* TYPOGRAPHY
 /*******************************************/
+@font-face {
+  font-family: 'Surfbreaks';
+  src: url('../img/Surfbreaks-8ErZ.ttf') format('truetype')
+}
+
 
 /******************************************
 /* BASE STYLES
@@ -50,7 +55,7 @@ html {
 /*******************************************/
 
 .container {
-  background: rgba(206, 158, 2, 0.5);
+  background: rgba(206, 152, 2, 0.5);
   border-radius: 10px;
   padding: 2rem;
   min-height: 80vh;
@@ -65,9 +70,12 @@ html {
 }
 
 h1 {
+  font-family: 'Surfbreaks';
   color: red;
-  font-size: 5rem;
+  font-size: 9rem;
   margin-bottom: 2rem;
+  /* text-shadow: 0 0 10px rgba(0,0,0,1); */
+  text-shadow: 0 0 10px rgba(255,255,255,1)
 }
 
 ul {
@@ -79,20 +87,27 @@ ul {
 
 li {
   list-style-type: none;
-  display: block;
   margin: .5rem;
-  padding: 10px 30px 10px 30px;
+  padding: 10px 15px 10px 15px;
   position: relative;
   line-height: 2.4rem;
   background: rgba(255,255,255,.5);
   border-radius: 10px;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
 }
 
-.fact,
-.likeBox,
-.controls {
-  /* background: rgba(255,255,255,.5); */
-  /* border-radius: 10px; */
+.sideCrab {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.sideCrab img {
+  filter: invert(19%) sepia(73%) saturate(7290%) hue-rotate(357deg) brightness(108%) contrast(118%);
 }
 
 .fact {
@@ -100,14 +115,13 @@ li {
   display: block;
 }
 
-.fact::before {
+/* .fact::before {
   content: '';
   position: absolute;
   background-image: url('../img/crab-svgrepo-com.svg');
   width: 20px;
   height: 20px;
   left: -20px;
-  /* top: 0px; */
   filter: invert(19%) sepia(73%) saturate(7290%) hue-rotate(357deg) brightness(108%) contrast(118%);
 }
 
@@ -118,9 +132,10 @@ li {
   width: 20px;
   height: 20px;
   right: -20px;
-  /* top: 0px; */
   filter: invert(19%) sepia(73%) saturate(7290%) hue-rotate(357deg) brightness(108%) contrast(118%);
-}
+} */
+
+/* ! ---- ICONS ---- */
 
 .likes {
   position: relative;
@@ -131,7 +146,7 @@ li {
 .likes::before {
   content: '';
   position: absolute;
-  right: 0px;
+  right: -1px;
   top: -5px;
   z-index: -1;
 
@@ -146,7 +161,7 @@ li {
 .likes::after {
   content: '';
   position: absolute;
-  right: -8px;
+  right: -9px;
   top: -5px;
   z-index: -1;
 
@@ -158,20 +173,57 @@ li {
   border-radius: 50% 50% 0 0;
 }
 
+.fa-heart-circle-plus {
+  color: rgb(145, 0, 0);
+  /* text-shadow: 0 0 5px black; */
+  transition: color .3s, text-shadow .3s;
+}
+
 .fa-heart-circle-plus:hover {
   cursor: pointer;
   text-shadow: 0 0 5px white;
-  filter: invert(19%) sepia(73%) saturate(7290%) hue-rotate(357deg) brightness(108%) contrast(118%);
-
+  color: rgb(255, 102, 127);
+  transition: color .3s, text-shadow .3s;
 }
+
+.fa-trash {
+  color: rgb(145, 0, 0);
+  /* text-shadow: 0 0 5px black; */
+  transition: color .3s, text-shadow .3s;
+}
+
+.fa-trash:hover {
+  cursor: pointer;
+  text-shadow: 0 0 5px white;
+  color: red;
+  transition: color .3s, text-shadow .3s;
+}
+
+/* ! ---- ADD FACTS ---- */
 
 .addFacts {
   align-self: flex-end;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-family: 'Surfbreaks';
+  font-size: 4rem;
+  color: red;
+  text-shadow: 0 0 5px white;
   margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  font-size: 2rem;
+}
+
+input[type='text'] {
+  flex: 3;
+}
+
+input[type='submit'] {
+  flex: 1;
 }
 
 

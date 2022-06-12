@@ -24,17 +24,25 @@
       <ul class="crabFactList">
       <% for(let i=0; i < info.length; i++) {%>
           <li class="crabFact">
+            <div class="sideCrab">
+              <img src="../img/crab-svgrepo-com.svg" height="20" width="20">
+            </div>
+            <div class="factContent">
               <span class="fact"><%= info[i].fact %></span>
               <span class="likes"><%= info[i].likes %></span>
               <span class="fa-solid fa-heart-circle-plus"></span>
               <span class='fa fa-trash'></span>
+            </div>
+            <div class="sideCrab">
+              <img src="../img/crab-svgrepo-com.svg" height="20" width="20">
+            </div>
           </li>
       <% } %>
       </ul>
     </section>
 
     <section class="addFacts">
-      <h2>Know something about crabs? Share it with the class!</h2>
+      <h2>Add your crab facts!</h2>
 
       <form action="/addFact" method="POST">
           <input type="text" placeholder="Crab Fact" name="fact">

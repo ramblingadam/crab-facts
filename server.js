@@ -21,7 +21,7 @@ crab.use(express.urlencoded({ extended: true })) // Parses URL via qs library
 crab.use(express.json())
 
 crab.get('/', (req, res) => {
-  db.collection('crabFacts').find().toArray()
+  db.collection('crabFacts').find().sort({likes: -1}).toArray()
     .then(data => {
       console.log(data)
       res.render('index.ejs', { info: data })
@@ -43,8 +43,6 @@ crab.put('/addOneLike', (req, res) => {
     $set: {
       likes:req.body.currentLikes + 1
     }
-  }, {
-    sort: {_likes: -1}
   })
   .then(result => {
     console.log('1 Like added.')
