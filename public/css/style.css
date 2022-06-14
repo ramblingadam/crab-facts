@@ -50,6 +50,29 @@ html {
   /* background: url('../img/crabBG.jpg'); */
 }
 
+/* SCROLLBARS */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: orange rgb(255, 203, 65);
+}
+
+/* Chrome, Edge, Safari */
+*::-webkit-scrollbar {
+width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+background: rgb(255, 222, 113);
+}
+
+*::-webkit-scrollbar-thumb {
+background-color: rgb(255, 203, 65);
+border-radius: 20px;
+border: 3px solid orange;
+}
+/* END SCROLLBARS */
+
 /******************************************
 /* LAYOUT
 /*******************************************/
@@ -130,28 +153,6 @@ span {
   position: relative;
   display: block;
 }
-
-
-
-/* .fact::before {
-  content: '';
-  position: absolute;
-  background-image: url('../img/crab-svgrepo-com.svg');
-  width: 20px;
-  height: 20px;
-  left: -20px;
-  filter: invert(19%) sepia(73%) saturate(7290%) hue-rotate(357deg) brightness(108%) contrast(118%);
-}
-
-.fact::after {
-  content: '';
-  position: absolute;
-  background-image: url('../img/crab-svgrepo-com.svg');
-  width: 20px;
-  height: 20px;
-  right: -20px;
-  filter: invert(19%) sepia(73%) saturate(7290%) hue-rotate(357deg) brightness(108%) contrast(118%);
-} */
 
 /* ! ---- ICONS ---- */
 
@@ -242,6 +243,8 @@ form {
 
 textarea {
   flex: 3;
+  max-height: 6rem;
+  min-height: 6rem;
 }
 
 input[type='submit'] {

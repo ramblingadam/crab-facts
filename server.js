@@ -32,6 +32,19 @@ crab.get('/', (req, res) => {
   .catch(error => console.log(error))
 })
 
+crab.get('/resetlikes/:pw', (req, res) => {
+  if(req.params.pw === process.env.DELETE_PW) {
+    db.collection('crabFacts').updateMany({},
+      {$set: {
+        likes: 0
+      }})
+      .then(result => {
+        res.redirect('/')
+      })
+  }
+  else res.redirect('/')
+})
+
 crab.post('/addFact', (req, res) => {
   if(req.body.fact.toLowerCase().includes('crab')) {
     db.collection('crabFacts').insertOne( { fact: req.body.fact, likes: 0 })

@@ -1,16 +1,19 @@
+// ! ---- GRAB BUTTONS AND ADD LISTENERS ----
 const deleteButtons = document.querySelectorAll('.fa-trash')
 const likeButtons = document.querySelectorAll('.fa-heart-circle-plus')
-
 Array.from(deleteButtons).forEach( deleteButton => {
   deleteButton.addEventListener('click', deleteFact)
 })
-
 Array.from(likeButtons).forEach( likeButton => {
   likeButton.addEventListener('click', addLike)
 })
 
+/////////////////////////////
+// ! --- INIT CRABFACTS LIKES TRACKER ---
+if(!localStorage.getItem('crabFacts')) localStorage.setItem('crabFacts', '{}')
 
-
+/////////////////////////////
+// ! ---- DELETE FACT ----
 async function deleteFact() {
   const deletePW = window.prompt('Password required to delete:')
 
@@ -36,12 +39,16 @@ async function deleteFact() {
   }
 }
 
+/////////////////////////////
+// ! ---- ADD LIKE ----
 async function addLike() {
   const fact = this.parentNode.childNodes[1].innerText
   const likes = Number(this.parentNode.childNodes[3].innerText)
-  if(!localStorage.getItem(fact)) {
-    localStorage.setItem(fact, true)
-
+  
+  const likedFacts = JSON.parse(localStorage.getItem('crabFacts'))
+  if(!likedFacts[fact]) {
+    likedFacts[fact] = true
+    localStorage.setItem('crabFacts', JSON.stringify(likedFacts))
     try {
       const response = await fetch('addOneLike', {
         method: 'put',
