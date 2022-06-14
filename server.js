@@ -13,22 +13,25 @@ crab.use(express.static('public'))
 crab.use(express.urlencoded({ extended: true })) // Parses URL via qs library
 crab.use(express.json())
 
-MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
+
+
+
+
+crab.get('/', (req, res) => {
+  MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
   .then(client => {
     console.log(`Connected to ${dbName} Database.`)
     db = client.db(dbName)
     
   })
-
-
-
-crab.get('/', (req, res) => {
+  .then( ()=> {
   db.collection('crabFacts').find().sort({likes: -1}).toArray()
     .then(data => {
       console.log(data)
       res.render('index.ejs', { info: data })
     })
-    .catch(error => console.log(error))
+  })
+  .catch(error => console.log(error))
 })
 
 crab.post('/addFact', (req, res) => {
