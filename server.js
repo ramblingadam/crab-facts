@@ -1,4 +1,3 @@
-const { request, response } = require('express')
 const express = require('express')
 const crab = express()
 const MongoClient = require('mongodb').MongoClient

@@ -93,10 +93,13 @@ li {
   line-height: 2.4rem;
   background: rgba(255,255,255,.5);
   border-radius: 10px;
+  max-width: 1400px;
 
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+
+  box-shadow: 0 -4px 10px rgb(88, 88, 88) inset;
 }
 
 .sideCrab {
