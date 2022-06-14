@@ -8,7 +8,7 @@ let db
 let dbConnectionStr = process.env.DB_STRING
 let dbName = 'crabsDB'
 let loadDone = false
-
+console.log(process.env.DB_STRING)
 console.log('attempting to connect to db')
 MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
 .then(client => {
