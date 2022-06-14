@@ -7,6 +7,15 @@ require('dotenv').config()
 let db
 let dbConnectionStr = process.env.DB_STRING
 let dbName = 'crabsDB'
+let loadDone = false
+
+console.log('attempting to connect to db')
+MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
+.then(client => {
+  console.log(`Connected to ${dbName} Database.`)
+  db = client.db(dbName)
+  loadDone = true
+})
 
 crab.set('view engine', 'ejs')
 crab.use(express.static('public'))
@@ -15,22 +24,18 @@ crab.use(express.json())
 
 
 
-
-
 crab.get('/', (req, res) => {
-  MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
-  .then(client => {
-    console.log(`Connected to ${dbName} Database.`)
-    db = client.db(dbName)
-    
-  })
-  .then( ()=> {
+  // if(!loadDone) {
+  //   res.send('<h1>Loading!</h1>')
+  //   setTimeout(()=> {
+  //     refresh()
+  //   }, 1000)
+  // }
   db.collection('crabFacts').find().sort({likes: -1}).toArray()
     .then(data => {
       console.log(data)
       res.render('index.ejs', { info: data })
     })
-  })
   .catch(error => console.log(error))
 })
 
