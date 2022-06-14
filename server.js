@@ -10,12 +10,7 @@ let dbName = 'crabsDB'
 let loadDone = false
 console.log(process.env.DB_STRING)
 console.log('attempting to connect to db')
-MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
-.then(client => {
-  console.log(`Connected to ${dbName} Database.`)
-  db = client.db(dbName)
-  loadDone = true
-})
+
 
 crab.set('view engine', 'ejs')
 crab.use(express.static('public'))
@@ -31,11 +26,19 @@ crab.get('/', (req, res) => {
   //     refresh()
   //   }, 1000)
   // }
-  db.collection('crabFacts').find().sort({likes: -1}).toArray()
-    .then(data => {
-      console.log(data)
-      res.render('index.ejs', { info: data })
-    })
+  MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
+  .then(client => {
+    console.log(`Connected to ${dbName} Database.`)
+    db = client.db(dbName)
+    loadDone = true
+  })
+  .then(() => {
+    db.collection('crabFacts').find().sort({likes: -1}).toArray()
+      .then(data => {
+        // console.log(data)
+        res.render('index.ejs', { info: data })
+      })
+  })
   .catch(error => console.log(error))
 })
 
