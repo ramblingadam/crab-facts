@@ -26,19 +26,22 @@ crab.use(express.json())
 crab.get('/', (req, res) => {
   db.collection('crabFacts').find().sort({likes: -1}).toArray()
     .then(data => {
-      console.log(data)
+      // console.log(data)
       res.render('index.ejs', { info: data })
     })
   .catch(error => console.log(error))
 })
 
 crab.post('/addFact', (req, res) => {
-  db.collection('crabFacts').insertOne( { fact: req.body.fact, likes: 0 })
-  .then(result => {
-    console.log('Crab fact added.')
-    res.redirect('/')
-  })
-  .catch(error => console.log(error))
+  if(req.body.fact.toLowerCase().includes('crab')) {
+    db.collection('crabFacts').insertOne( { fact: req.body.fact, likes: 0 })
+    .then(result => {
+      console.log('Crab fact added.')
+      res.redirect('/')
+    })
+    .catch(error => console.log(error))
+  }
+  else res.json('Your fact MUST be about crabs!')
 })
 
 crab.put('/addOneLike', (req, res) => {
@@ -54,13 +57,25 @@ crab.put('/addOneLike', (req, res) => {
   .catch(error => console.error(error))
 })
 
+// crab.get('/pwcheck', (req, res) => {
+//   console.log(req.body.pw)
+//   // if(req.body.pw === process.env.DELETE_PW) res.
+// })
+
+
 crab.delete('/deleteFact', (req, res) => {
-  db.collection('crabFacts').deleteOne({fact: req.body.factToDelete})
-  .then(result => {
-    console.log('Crab fact deleted.')
-    res.json('Crab fact deleted.')
-  })
-  .catch(error => console.error(error))
+  console.log(req.body.pw)
+  if(req.body.pw === process.env.DELETE_PW) {
+    db.collection('crabFacts').deleteOne({fact: req.body.factToDelete})
+    .then(result => {
+      console.log('Crab fact deleted.')
+      res.json('Crab fact deleted.')
+    })
+    .catch(error => console.error(error))
+  } else {
+    console.log('Incorrect password.')
+    res.json({ msg: 'Incorrect password.'} )
+  }
 })
 
 crab.listen(PORT, () => {

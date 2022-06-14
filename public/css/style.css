@@ -54,15 +54,17 @@ html {
 /* LAYOUT
 /*******************************************/
 
+
 .container {
   background: rgba(206, 152, 2, 0.5);
   border-radius: 10px;
   padding: 2rem;
-  min-height: 80vh;
+  /* min-height: 80vh; */
   display: flex;
   /* flex-flow: row wrap; */
   flex-flow: column nowrap;
   justify-content: space-between;
+  
 }
 
 .container > section {
@@ -83,6 +85,8 @@ ul {
   /* border: 2px dashed red; */
   margin-bottom: 2rem;
   display: inline-block;
+  overflow-y: scroll;
+  max-height: 650px;
 }
 
 li {
@@ -114,9 +118,8 @@ li {
 }
 
 /* .factContent {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
+  overflow-y:scroll;
+  max-height: 800px;
 } */
 
 span {
@@ -220,6 +223,8 @@ span {
 
 .addFacts {
   align-self: flex-end;
+  max-width: 500px;
+  margin: auto;
 }
 
 h2 {
@@ -235,7 +240,7 @@ form {
   font-size: 2rem;
 }
 
-input[type='text'] {
+textarea {
   flex: 3;
 }
 
@@ -248,3 +253,15 @@ input[type='submit'] {
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+
+@media all and (max-width: 550px) {
+  .container {
+    padding: .5rem;
+  }
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 3rem;
+  }
+}
