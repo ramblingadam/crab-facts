@@ -8,6 +8,8 @@ Array.from(likeButtons).forEach( likeButton => {
   likeButton.addEventListener('click', addLike)
 })
 
+
+
 /////////////////////////////
 // ! --- INIT CRABFACTS LIKES TRACKER ---
 if(!localStorage.getItem('crabFacts')) localStorage.setItem('crabFacts', '{}')
@@ -44,7 +46,7 @@ async function deleteFact() {
 async function addLike() {
   const fact = this.parentNode.childNodes[1].innerText
   const likes = Number(this.parentNode.childNodes[3].innerText)
-  
+
   const likedFacts = JSON.parse(localStorage.getItem('crabFacts'))
   if(!likedFacts[fact]) {
     likedFacts[fact] = true

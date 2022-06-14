@@ -247,6 +247,11 @@ textarea {
   min-height: 6rem;
 }
 
+
+
+input[type='text'] {
+  flex: 4;
+}
 input[type='submit'] {
   flex: 1;
 }
